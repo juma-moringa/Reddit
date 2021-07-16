@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'redditclone.apps.RedditcloneConfig',
-    'bootstrap3',
+    'bootstrap4',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -77,10 +78,13 @@ WSGI_APPLICATION = 'reddit.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'redit',   
+        'USER': 'moringa',      
+        'PASSWORD':'Access',
     }
 }
+
 
 
 # Password validation
@@ -113,7 +117,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

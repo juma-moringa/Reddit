@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{%load bootstrap4%}
+{% block content %}
+<div class="container">
+    <h1>Reddit</h1>
+    <p>Trending today</p>
+
+    <h5>Popular Posts</h5>
+
+    <div class="jumbotron jumbotron col-md-7 col-sm-6 "
+        style="background-color: white;border:0.5px solid rgb(194, 190, 190); height:30px; padding-top: 10px;">
+        <img style="padding-right: 70px; "
+            src="https://img.icons8.com/fluent-systems-filled/48/4a90e2/hot-sales-hours.png" />
+        <img style="padding-right: 70px; " src="https://img.icons8.com/material-rounded/24/4a90e2/settings.png" />
+        <img style="padding-right: 70px; " src="https://img.icons8.com/emoji/48/4a90e2/top-arrow-emoj.png" />
+        <img style="padding-right: 70px; "
+            src="https://img.icons8.com/material-rounded/24/4a90e2/dots-loading--v3.png" />
+    </div>
+
+    <a class="btn btn-primary" href="{% url 'create' %}">New Post</a>
+    <br>
+    <br>
+
+    {% for post in posts.all %}
+    <!-- {% if user.is_authenticated %} -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-sm-6 ">
+                <div class="card m-3">
+                    <h5>{{ post.title }}</h5>
+                    <p>Posted by :{{ post.author.username }}.</p>
+                    <p>published on :{{ post.published_date }}</p>
+                    <p><a href="{{ post.url }}">view site</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}

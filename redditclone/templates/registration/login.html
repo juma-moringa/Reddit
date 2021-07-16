@@ -1,0 +1,62 @@
+{%extends "registration/base.html"%}
+{% load bootstrap4 %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+<style>
+  body {
+  
+    border: none;
+    border-radius: 0%;
+    margin: 0%;
+  }
+</style>
+<body>
+<div id="b">
+  <div  class="container" style="padding-top:90px">
+    <div class="row">
+      <!-- Empty div -->
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        {% if form.errors %}
+        <p> Password or Username is incorrect </p>
+        {% endif %}
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+            <h2 class="text-center">Reddit</h2>
+  
+          </div>
+          <div class="panel-body">
+
+            <form action="/accounts/login/" method="post">
+              {% csrf_token %}
+              {% bootstrap_form form%}
+
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm" value="Login">
+              </div>
+
+              <input type="hidden" name="next" value="{{next}}">
+
+              <p class="container">You don't have an account? <a href="/register"> Sign Up</a></p>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- empty div -->
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+</body>
+
+</html>
